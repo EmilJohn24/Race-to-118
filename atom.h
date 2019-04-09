@@ -45,7 +45,6 @@ int* initializeParticle(int atomicWeight, int atomicNumber, int color){
 }
 void efficientPrinter(int x, int y, int elemParticle, int color){
     textcolor(color);
-    //if (x >= FIELD_SIDE - 1 || y >= FIELD_SIDE - 1) return;
     if (whereX() != x || whereY() != y)
         gotoxy(x, y);
     printf("%c", elemParticle);
@@ -80,7 +79,6 @@ void moveParticle(int* particle, int xMovement, int yMovement){
 	destroyLastParticleInstance(particle);
 	particle[X_COORD] += xMovement;
 	particle[Y_COORD] += yMovement;
-	//printf("%d", xMovement);
 	int* collidedObject = advancedCollisionCheck(particle);
 	if (collidedObject){
 		//creates collision effect if player collides with another atom

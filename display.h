@@ -14,7 +14,6 @@ void placeParticle(int* particle){
 		for (int curX = particle[X_COORD]; curX != (particle[X_COORD] + dimension); curX++){
 		    newX = curX % FIELD_SIDE;
             newY = curY % FIELD_SIDE;
-            //if (curY >= FIELD_SIDE - 1 || curX >= FIELD_SIDE - 1 || curX < 0 || curY < 0) continue;
 			outOfProtons = placedProtons == particle[ATOMIC_NUMBER];
 			outOfNeutrons = placedNeutrons == particle[ATOMIC_WEIGHT] - particle[ATOMIC_NUMBER];
 
