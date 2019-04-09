@@ -1,5 +1,5 @@
 #define FRAMERATE 20
-#define FIELD_SIDE 70
+#define FIELD_SIDE 50
 #include "console.h"
 #include "atom.h"
 #include "radioactivity.h"
@@ -42,8 +42,8 @@ int *Particle(int atomicWeight, int atomicNumber, int color){
 int *Player(int atomicWeight, int atomicNumber, int color){
 	//creates the player array
 	int* player = Particle(atomicWeight, atomicNumber, color);
-	player[X_COORD] = 1;
-	player[Y_COORD] = 1;
+	player[X_COORD] = FIELD_SIDE / 2;
+	player[Y_COORD] = FIELD_SIDE / 2;
 	field[player[X_COORD]][player[Y_COORD]] = player;
 	return player;
 }
@@ -62,24 +62,20 @@ void fieldMove(int *particle){
 
 	else if (wallCollisionCheck(particle, true)){
         destroyLastParticleInstance(particle);
-        particle[X_COORD] = abs(FIELD_SIDE - particle[X_COORD] - 3);
+        particle[X_COORD] =  abs(FIELD_SIDE - particle[X_COORD] - 3);
         fieldMove(particle);
 		return;
 	}
 	else if (wallCollisionCheck(particle, false)){
         destroyLastParticleInstance(particle);
-        particle[Y_COORD] = abs(FIELD_SIDE - particle[Y_COORD] - 3);
+        particle[Y_COORD] = abs(FIELD_SIDE - particle[Y_COORD] - 2);
         fieldMove(particle);
         return;
 	}
 
 
     else{
-        int previousX = particle[X_COORD];
-        int previousY = particle[Y_COORD];
         runParticle(particle);
-        //cout << particle[X_COORD];
-        //field[previousX][previousY] = NULL;
         field[particle[X_COORD]][particle[Y_COORD]] = particle;
     }
 }
@@ -93,16 +89,16 @@ void controls(int &velocityX, int &velocityY){
 	if (kbhit()){
 			char move = getch();
 			switch(move){
-				case 'w':
+				case 'w': case 'W':
 					velocityX = 0; velocityY = -1;
 					break;
-				case 'a':
+				case 'a': case 'A':
 					velocityX = -1; velocityY = 0;
 					break;
-				case 's':
+				case 's': case 'S':
 					velocityX = 0; velocityY = 1;
 					break;
-				case 'd':
+				case 'd': case 'D':
 					velocityX = 1; velocityY = 0;
 					break;
 				default:
@@ -135,12 +131,13 @@ int* advancedCollisionCheck(int *particle){
 	int x = particle[X_COORD];
 	int y = particle[Y_COORD];
 
-	int dimension = getDimension(particle);
+	int dimension = getDimension(particle) + 1;
 	int velocityX = particle[X_VELOCITY];
 	int velocityY = particle[Y_VELOCITY];
 	//Four sided collision detection
 	for (int i = 0; i != dimension; i++){
 		if (velocityX > 0){
+            textcolor(BYELLOW);
 			if (isParticle(x + dimension, y + i)){
 				return getCollidedObjectFoundIn(x + dimension, y + i);
 			}
@@ -153,7 +150,7 @@ int* advancedCollisionCheck(int *particle){
 		}*/
 
 		else if (velocityY > 0){
-			if (getConsoleChar(x + i, y + dimension) != ' '){
+			if (isParticle(x + i, y + dimension)){
 				return getCollidedObjectFoundIn(x + i, y + dimension);
 			}
 		}
@@ -193,7 +190,10 @@ void groupFieldMove(int *atoms[], int size){
 void groupUpdateVelocity(int *enemies[], int size){
 	int i = 0;
 	while (i <= size){
-        velocity(enemies[i], rand() % 3 - 1, rand() % 3 - 1);
+        if (rand() % 2 == 0)
+            velocity(enemies[i], rand() % 3 - 1, 0);
+        else
+            velocity(enemies[i], 0, rand() % 3 - 1);
 		i++;
 	}
 }

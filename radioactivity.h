@@ -1,6 +1,10 @@
 // Magic Numbers: 2,8,20,28,50,82,126
 int* Particle(int atomicWeight, int atomicNumber, int color);
 
+int* alphaDecay(int *particle){
+    return NULL;
+}
+
 int* betaDecay(int *particle){
     particle[ATOMIC_NUMBER]++;
     return Particle(0,-1,TRED);
@@ -44,6 +48,11 @@ int* decayParticle(int* particle){
         else
             return NULL;
 
+    }
+
+    if (protons > 84){
+        return NULL;
+        //place alpha decay stuff here
     }
     return NULL;
 

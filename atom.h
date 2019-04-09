@@ -16,14 +16,14 @@ int Y_VELOCITY = 5;
 int COLOR = 6;
 const char NEUTRON = 'o';
 const char PROTON = '+';
-//const char ELECTRON = '-';
+const char ELECTRON = '-';
 //const char POSITRON = 'O';
 void destroyLastParticleInstance(int* particle);
 void placeParticle(int* particle);
 int* advancedCollisionCheck(int *particle);
 void fieldDelete(int x, int y);
 int* getField();
-
+void displayPlayerData(int* player);
 
 int* initializeParticle(int atomicWeight, int atomicNumber, int color){
 	/*Quick Guide:
@@ -32,6 +32,7 @@ int* initializeParticle(int atomicWeight, int atomicNumber, int color){
 	Electron: number = -1, weight = 0
 	Alpha: number = 2, weight = 4
 	*/
+	//initializes the particles and sets all its properties to 0 except for the atomic weight, atomic and color
 	int* particle = (int*) malloc(7 * sizeof(int)); //7 PROPERTIES
 	particle[ATOMIC_WEIGHT] = atomicWeight;
 	particle[ATOMIC_NUMBER] = atomicNumber;
@@ -42,13 +43,25 @@ int* initializeParticle(int atomicWeight, int atomicNumber, int color){
 	particle[COLOR] = color;
 	return particle;
 }
+void efficientPrinter(int x, int y, int elemParticle, int color){
+    textcolor(color);
+    //if (x >= FIELD_SIDE - 1 || y >= FIELD_SIDE - 1) return;
+    if (whereX() != x || whereY() != y)
+        gotoxy(x, y);
+    printf("%c", elemParticle);
+}
+
+void placeElectronIn(int x, int y, int color){
+    efficientPrinter(x, y, ELECTRON, color);
+}
+
 
 void placeNeutronIn(int x, int y, int color){
-	putxy(x, y, color, &NEUTRON);
+    efficientPrinter(x, y, NEUTRON, color);
 }
 
 void placeProtonIn(int x, int y, int color){
-	putxy(x, y, color, &PROTON);
+    efficientPrinter(x, y, PROTON, color);
 }
 
 void collisionEffect(int repeats){
@@ -67,21 +80,18 @@ void moveParticle(int* particle, int xMovement, int yMovement){
 	destroyLastParticleInstance(particle);
 	particle[X_COORD] += xMovement;
 	particle[Y_COORD] += yMovement;
+	//printf("%d", xMovement);
 	int* collidedObject = advancedCollisionCheck(particle);
 	if (collidedObject){
-		//printf("%d %d", collidedObject[ATOMIC_WEIGHT], collidedObject[ATOMIC_NUMBER]);
 		//creates collision effect if player collides with another atom
 		if (collidedObject == player || particle == player) collisionEffect(5);
 		particle[ATOMIC_WEIGHT] += collidedObject[ATOMIC_WEIGHT];
 		particle[ATOMIC_NUMBER] += collidedObject[ATOMIC_NUMBER];
-		int x = collidedObject[X_COORD];
-		int y = collidedObject[Y_COORD];
 		destroyLastParticleInstance(collidedObject);
 		collidedObject[X_VELOCITY] = 0;
 		collidedObject[Y_VELOCITY] = 0;
 		collidedObject[ATOMIC_NUMBER] = 0;
 		collidedObject[ATOMIC_WEIGHT] = 0;
-		//fieldDelete(x, y);
 	}
 	placeParticle(particle);
 }
