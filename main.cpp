@@ -13,7 +13,6 @@ int main(){
 	setupScreen();
 	srand(time(0));
     player = Player(4, 2, TBLUE);
-	//int *player = Player(4, 2, TBLUE);
 	int *otherAtoms[ENEMY_SIZE];
 	int velocityX = 0;
 	int velocityY = 0;
