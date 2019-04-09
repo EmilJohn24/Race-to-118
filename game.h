@@ -142,27 +142,16 @@ int* advancedCollisionCheck(int *particle){
 				return getCollidedObjectFoundIn(x + dimension, y + i);
 			}
 		}
-		/*
-		else if (velocityX < 0){
-			if (getConsoleChar(x - velocityX, y + i) != ' '){
-				return getCollidedObjectFoundIn(x - velocityX, y + i);
-			}
-		}*/
+
 
 		else if (velocityY > 0){
 			if (isParticle(x + i, y + dimension)){
 				return getCollidedObjectFoundIn(x + i, y + dimension);
 			}
 		}
-		/*
-		else if (velocityY < 0){
-			if (getConsoleChar(x + i, y - velocityY) != ' '){
-				return getCollidedObjectFoundIn(x + i, y - velocityY);
-			}
-		}*/
+
 	}
-	//gotoxy(0,0);
-	//cout << "FUCK";
+
 	return NULL;
 
 }
@@ -172,8 +161,6 @@ void addAtomTo(int *atoms[], int pos, int color){
 	int *newParticle = Particle(4,2,color); //randomize later
 	newParticle[X_COORD] = rand() % FIELD_SIDE;
 	newParticle[Y_COORD] = rand() % FIELD_SIDE;
-	//int i = 0;
-//	while (atoms[i] != NULL) i++;
 	atoms[pos] = newParticle;
 }
 
