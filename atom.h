@@ -80,7 +80,7 @@ void moveParticle(int* particle, int xMovement, int yMovement){
 	particle[X_COORD] += xMovement;
 	particle[Y_COORD] += yMovement;
 	int* collidedObject = advancedCollisionCheck(particle);
-	if (collidedObject){
+	if (collidedObject && collidedObject != particle){
 		//creates collision effect if player collides with another atom
 		if (collidedObject == player || particle == player) collisionEffect(5);
 		particle[ATOMIC_WEIGHT] += collidedObject[ATOMIC_WEIGHT];
