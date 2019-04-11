@@ -6,7 +6,6 @@ int *player;
 #include "game.h"
 #include "display.h"
 #include "welcome.h"
-
 #define ENEMY_SIZE 100000
 int main(){
     welcomePage();
