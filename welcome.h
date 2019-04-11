@@ -9,10 +9,21 @@ void welcomePage(){
     printf("\n\n\nPress any key to continue...");
     printf("\n");
     setScreenSize(WELCOME_SCREEN_SIZE, WELCOME_SCREEN_SIZE);
-    //fernDisplay(100, 10,120000, 10);
-    float vertexA[2] = {25,15}, vertexB[2] = {0,80}, vertexC[2] = {60,60};
 
-    sierpinskisTriangle(vertexA, vertexB, vertexC,100000);
+    int loadingDisplay = rand() % 2;
+    switch(loadingDisplay){
+    case 0:
+        fernDisplay(100, 10,120000, 10);
+        break;
+    case 1:
+        float vertexA[2] = {25,15}, vertexB[2] = {0,80}, vertexC[2] = {60,60};
+        float vertexD[2] = {80, 50};
+        sierpinskisTriangle(vertexA, vertexB, vertexC, 100000, TYELLOW);
+        sierpinskisTriangle(vertexA, vertexC, vertexD, 100000, TRED);
+        break;
+    }
+
+
     getch();
     system("cls");
 
