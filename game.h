@@ -9,10 +9,8 @@ int *field[FIELD_SIDE][FIELD_SIDE];
 
 
 void fieldDelete(int x, int y){
+    //deletes the particle at coord x, y in the field
 	int *currentCell = field[x][y];
-	//for (int i = 0; i != 6; i++){
-		//currentCell[i] = 0;
-	//}
 	currentCell[ATOMIC_NUMBER] = 0;
 	currentCell[ATOMIC_WEIGHT] = 0;
 	field[x][y] = NULL;
@@ -20,6 +18,8 @@ void fieldDelete(int x, int y){
 
 
 void fieldClear(){
+    //empties the entire field
+    //used for initiaization
 	for (int x = 0; x != FIELD_SIDE; x++){
 		for (int y = 0; y != FIELD_SIDE; y++){
 			field[x][y] = NULL;
@@ -29,10 +29,12 @@ void fieldClear(){
 
 
 void setupScreen(){
+    //sets up the screen size according to the FIELD_SIDE constant
 	setWindowSize(FIELD_SIDE, FIELD_SIDE);
 
 }
 int *Particle(int atomicWeight, int atomicNumber, int color){
+    //initializes a particle and puts it on the field
 	int *particle = initializeParticle(atomicWeight, atomicNumber, color);
 	field[particle[X_COORD]][particle[Y_COORD]] = particle;
 	return particle;
@@ -49,6 +51,7 @@ int *Player(int atomicWeight, int atomicNumber, int color){
 }
 
 bool wallCollisionCheck(int *particle, bool side){
+    //checks if an atom has collided on the walls of the field
     if (side) return particle[X_COORD] <= 0  || particle[X_COORD] >= FIELD_SIDE - 1;
 	else return particle[Y_COORD] <= 0 || particle[Y_COORD] >= FIELD_SIDE - 1;
 }
@@ -81,14 +84,17 @@ void fieldMove(int *particle){
 }
 
 void setFrameDelay(){
+    //frame control based on a customizable value for frame rate
 	Sleep((int) 1000 / FRAMERATE);
 
 }
 
 void controls(int &velocityX, int &velocityY){
+    //gets a key from the keyboard and changes the velocities appropriately
 	if (kbhit()){
 			char move = getch();
 			switch(move){
+			    //it is important to note that this is actually a case-sensitive selection process, and as such, there is a need for the capital cases
 				case 'w': case 'W':
 					velocityX = 0; velocityY = -1;
 					break;
@@ -110,11 +116,13 @@ void controls(int &velocityX, int &velocityY){
 }
 
 bool isParticle(int x, int y){
+    //checks if the object at x, y is a particle
     char currentChar = getConsoleChar(x, y);
     return currentChar == NEUTRON || currentChar == PROTON; //add other particles later
 }
 
 int* getCollidedObjectFoundIn(int x, int y){
+    //uses recursion to find the actual field coordinate of a particle at x,y
 	if (isParticle(x - 1, y)){
 		return getCollidedObjectFoundIn(x - 1, y);
 	}
@@ -128,6 +136,8 @@ int* getCollidedObjectFoundIn(int x, int y){
 
 
 int* advancedCollisionCheck(int *particle){
+    //checks if a particle has collided with something and returns a pointer to the collided object
+    //returns NULL if no collisions happened
 	int x = particle[X_COORD];
 	int y = particle[Y_COORD];
 
@@ -157,11 +167,13 @@ int* advancedCollisionCheck(int *particle){
 }
 
 bool isDefeated(int *particle){
+    //checks if a particle has been defeated, i.e. it no longer has a weight
     return particle[ATOMIC_WEIGHT] == 0;
 
 }
 
 void addAtomTo(int *atoms[], int pos, int color){
+    //adds an atom to an atom group (array)
 	int *newParticle = Particle(4,2,color); //randomize later
 	newParticle[X_COORD] = rand() % FIELD_SIDE;
 	newParticle[Y_COORD] = rand() % FIELD_SIDE;
@@ -169,6 +181,7 @@ void addAtomTo(int *atoms[], int pos, int color){
 }
 
 void groupFieldMove(int *atoms[], int size){
+    //moves a group of atoms according to their individually-stored velocities
 	int i = 0;
 	while(i <= size){
 		fieldMove(atoms[i]);

@@ -7,6 +7,14 @@ int *player;
 #include "display.h"
 #include "welcome.h"
 #define ENEMY_SIZE 100000
+
+/*
+Some design considerations (A Prelude):
+
+
+
+
+*/
 int main(){
     welcomePage();
 	setupScreen();

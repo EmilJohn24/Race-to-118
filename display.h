@@ -36,6 +36,7 @@ void placeParticle(int* particle){
 }
 
 void gameOverSequence(){
+    //prints game over
     gotoxy(0,0);
     setWindowSize(FIELD_SIDE, FIELD_SIDE * 2);
     printf("..######......###....##.....##.########.....#######..##.....##.########.########.\n.##....##....##.##...###...###.##..........##.....##.##.....##.##.......##.....##\n.##.........##...##..####.####.##..........##.....##.##.....##.##.......##.....##\n.##...####.##.....##.##.###.##.######......##.....##.##.....##.######...########.\n.##....##..#########.##.....##.##..........##.....##..##...##..##.......##...##..\n.##....##..##.....##.##.....##.##..........##.....##...##.##...##.......##....##.\n..######...##.....##.##.....##.########.....#######.....###....########.##.....##");
@@ -43,6 +44,7 @@ void gameOverSequence(){
 }
 
 void destroyLastParticleInstance(int* particle){
+    //destroys the last instance of a particle displayed on screen
     textcolor(TBLACK);
     int newX, newY;
 	//places the particle in its current stored distance
@@ -59,6 +61,7 @@ void destroyLastParticleInstance(int* particle){
 }
 
 void displayPlayerData(int* player){
+    //displays the data of an atom (used mainly for the player)
     gotoxy(0,0);
     float playerAtomicRatio = (float)player[ATOMIC_NUMBER] / (float)(player[ATOMIC_WEIGHT] - player[ATOMIC_NUMBER]);
     printf("Atomic Number: %d\n", player[ATOMIC_NUMBER]);
