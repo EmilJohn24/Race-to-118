@@ -38,7 +38,7 @@ void fernDisplay(float initialX, float initialY, int fernPixels, float scaling){
 
 }
 
-void sierpinskisTriangle(float vertexA[2], float vertexB[2], float vertexC[2], int pixels){
+void sierpinskisTriangle(float vertexA[2], float vertexB[2], float vertexC[2], int pixels, int color){
     const int X = 0, Y = 1;
     srand(time(0));
     float vertex[2] = {(float)(rand() % WELCOME_SCREEN_SIZE), (float)(rand() % WELCOME_SCREEN_SIZE)};
@@ -62,7 +62,7 @@ void sierpinskisTriangle(float vertexA[2], float vertexB[2], float vertexC[2], i
             vertex[Y] = (vertexC[Y] + vertex[Y]) / 2;
             break;
         }
-        putxy(vertex[X], vertex[Y], TYELLOW, "*");
+        putxy(vertex[X], vertex[Y], color, "*");
     }
 
 }
