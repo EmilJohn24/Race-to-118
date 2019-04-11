@@ -34,6 +34,7 @@
 		<Unit filename="atom.h" />
 		<Unit filename="console.h" />
 		<Unit filename="display.h" />
+		<Unit filename="fractals.h" />
 		<Unit filename="game.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="radioactivity.h" />
