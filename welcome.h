@@ -6,14 +6,14 @@
 void welcomePage(){
     srand(time(0));
     printf("$$$$$$$\\                                        $$\\                       $$\\     $$\\    $$$$$$\\  \n$$  __$$\\                                       $$ |                    $$$$ |  $$$$ |  $$  __$$\\\n$$ |  $$ | $$$$$$\\   $$$$$$$\\  $$$$$$\\        $$$$$$\\    $$$$$$\\        \\_$$ |  \\_$$ |  $$ /  $$ |\n$$$$$$$  | \\____$$\\ $$  _____|$$  __$$\\       \\_$$  _|  $$  __$$\\         $$ |    $$ |   $$$$$$  |\n$$  __$$<  $$$$$$$ |$$ /      $$$$$$$$ |        $$ |    $$ /  $$ |        $$ |    $$ |  $$  __$$<\n$$ |  $$ |$$  __$$ |$$ |      $$   ____|        $$ |$$\\ $$ |  $$ |        $$ |    $$ |  $$ /  $$ |\n$$ |  $$ |\\$$$$$$$ |\\$$$$$$$\\ \\$$$$$$$\\         \\$$$$  |\\$$$$$$  |      $$$$$$\\ $$$$$$\\ \\$$$$$$  |\n\\__|  \\__| \\_______| \\_______| \\_______|         \\____/  \\______/       \\______|\\______| \\______/");
-    printf("\n\n\nPress any key to continue...");
+    printf("\n\n\nLoading...");
     printf("\n");
     setScreenSize(WELCOME_SCREEN_SIZE, WELCOME_SCREEN_SIZE);
 
     int loadingDisplay = rand() % 2;
     switch(loadingDisplay){
     case 0:
-        fernDisplay(100, 10,120000, 10);
+        fernDisplay(100, 10,120000, 25);
         break;
     case 1:
         float vertexA[2] = {25,15}, vertexB[2] = {0,80}, vertexC[2] = {60,60};
@@ -22,8 +22,8 @@ void welcomePage(){
         sierpinskisTriangle(vertexA, vertexC, vertexD, 100000, TRED);
         break;
     }
-
-
+    gotoxy(0,10);
+    printf("Press any key to continue...");
     getch();
     system("cls");
 
