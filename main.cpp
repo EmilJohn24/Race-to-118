@@ -25,7 +25,6 @@ int main(){
         velocity(player, velocityX, velocityY);
 		decayParticle(player);
 		fieldMove(player);
-        gotoxy(0,0);
 		enemyHandler(otherAtoms, ENEMY_SIZE, frame);
 		frame++;
 	}
