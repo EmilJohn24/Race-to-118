@@ -156,6 +156,10 @@ int* advancedCollisionCheck(int *particle){
 
 }
 
+bool isDefeated(int *particle){
+    return particle[ATOMIC_WEIGHT] == 0;
+
+}
 
 void addAtomTo(int *atoms[], int pos, int color){
 	int *newParticle = Particle(4,2,color); //randomize later

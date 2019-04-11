@@ -27,6 +27,7 @@ int main(){
 		fieldMove(player);
 		enemyHandler(otherAtoms, ENEMY_SIZE, frame);
 		frame++;
+		if (isDefeated(player)) gameOverSequence();
 	}
 }
 
