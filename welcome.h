@@ -19,7 +19,7 @@ void welcomePage(){
         float vertexA[2] = {25,15}, vertexB[2] = {0,80}, vertexC[2] = {60,60};
         float vertexD[2] = {80, 50};
         sierpinskisTriangle(vertexA, vertexB, vertexC, 100000, TYELLOW);
-        sierpinskisTriangle(vertexA, vertexC, vertexD, 100000, TRED);
+        sierpinskisTriangle(vertexA, vertexC, vertexD, 10000, TRED);
         break;
     }
     gotoxy(0,10);
