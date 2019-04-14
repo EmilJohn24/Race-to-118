@@ -205,7 +205,6 @@ void groupUpdateVelocity(int *enemies[], int size){
 
 
 int framesPerSpawn = 40;
-
 int groupDecayParticles(int *enemies[], int spawnCount){
     int counter = 0;
     for (int i = 0; i != spawnCount; i++){
