@@ -20,10 +20,10 @@ int main(){
     //welcomePage();
 	setupScreen();
 	srand(time(0));
-    player = Player(4, 2, TBLUE);
-	int *otherAtoms[ENEMY_SIZE];
-	int velocityX = 0;
-	int velocityY = 0;
+    player = Player(4, 2, TBLUE); //array containing the player object
+	int *otherAtoms[ENEMY_SIZE]; //array of pointers to enemy atoms
+	int velocityX = 0; //player velocity in x-dir
+	int velocityY = 0; //player velocity in y-dir
 	fieldClear();
     //game proper
 	while (true){
@@ -31,7 +31,7 @@ int main(){
 		displayPlayerData(player);
 		controls(velocityX, velocityY);
         velocity(player, velocityX, velocityY);
-		int* emission = decayParticle(player);
+		int* emission = decayParticle(player); //pointer to emitted decayed particle from player
 		stable = !emission;
 		if (emission && frame % DECAY_INTERVAL == 1){
             int spawnCount = (int)floor(frame / framesPerSpawn);
