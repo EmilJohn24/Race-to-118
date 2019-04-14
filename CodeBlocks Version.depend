@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1555209167 source:c:\users\acer\race to 118\main.cpp
+1555228087 source:c:\users\acer\race to 118\main.cpp
 	<stdlib.h>
 	<stdio.h>
 	<time.h>
@@ -7,7 +7,7 @@
 	"display.h"
 	"welcome.h"
 
-1555205623 c:\users\acer\race to 118\game.h
+1555228304 c:\users\acer\race to 118\game.h
 	"console.h"
 	"atom.h"
 	"radioactivity.h"
@@ -16,13 +16,13 @@
 1552062354 c:\users\acer\race to 118\console.h
 	<windows.h>
 
-1555205481 c:\users\acer\race to 118\atom.h
+1555226068 c:\users\acer\race to 118\atom.h
 	<stdlib.h>
 	<math.h>
 
-1555212409 c:\users\acer\race to 118\display.h
+1555227508 c:\users\acer\race to 118\display.h
 
-1555204116 c:\users\acer\race to 118\radioactivity.h
+1555227770 c:\users\acer\race to 118\radioactivity.h
 
 1555208495 c:\users\acer\race to 118\welcome.h
 	"fractals.h"
