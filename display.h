@@ -2,6 +2,15 @@ void paintAtom(int color);
 
 void placeParticle(int* particle){
 	//places the particle in its current stored distance
+    if (particle[ATOMIC_NUMBER] == -1){
+        placeElectronIn(particle[X_COORD],particle[Y_COORD],particle[COLOR]);
+        return;
+    }
+
+    if (particle[ATOMIC_NUMBER] == -1 && particle[ATOMIC_WEIGHT] == 0){
+        placePositronIn(particle[X_COORD],particle[Y_COORD],particle[COLOR]);
+        return;
+    }
 	int color = particle[COLOR];
 	int dimension = getDimension(particle);
 	int placedNeutrons = 0;

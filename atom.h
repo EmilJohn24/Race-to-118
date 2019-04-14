@@ -17,7 +17,7 @@ int COLOR = 6;
 const char NEUTRON = 'o';
 const char PROTON = '+';
 const char ELECTRON = '-';
-//const char POSITRON = 'O';
+const char POSITRON = '%';
 void destroyLastParticleInstance(int* particle);
 void placeParticle(int* particle);
 int* advancedCollisionCheck(int *particle);
@@ -50,6 +50,10 @@ void efficientPrinter(int x, int y, int elemParticle, int color){
     printf("%c", elemParticle);
 }
 
+void placePositronIn(int x, int y, int color){
+    efficientPrinter(x, y, POSITRON, color);
+particle[X_COORD],particle[Y_COORD],particle[COLOR]
+}
 void placeElectronIn(int x, int y, int color){
     efficientPrinter(x, y, ELECTRON, color);
 }

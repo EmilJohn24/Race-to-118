@@ -6,7 +6,7 @@ int *player;
 #include "game.h"
 #include "display.h"
 #include "welcome.h"
-#define ENEMY_SIZE 100000
+#define ENEMY_SIZE 120000
 
 /*
 Some design considerations (A Prelude):
@@ -16,10 +16,10 @@ Some design considerations (A Prelude):
 
 */
 int main(){
-    welcomePage();
+    //welcomePage();
 	setupScreen();
 	srand(time(0));
-    player = Player(4, 2, TBLUE);
+    player = Player(40, 20, TBLUE);
 	int *otherAtoms[ENEMY_SIZE];
 	int velocityX = 0;
 	int velocityY = 0;
@@ -30,7 +30,18 @@ int main(){
 		displayPlayerData(player);
 		controls(velocityX, velocityY);
         velocity(player, velocityX, velocityY);
-		decayParticle(player);
+		int* emission = decayParticle(player);
+
+		if (emission && frame % DECAY_INTERVAL == 0){
+            int spawnCount = (int)floor(frame / framesPerSpawn);
+            addAtomTo(otherAtoms, spawnCount + 1, TBLUE);
+            int* newAtom = otherAtoms[spawnCount + 1];
+            newAtom[ATOMIC_WEIGHT] = emission[ATOMIC_WEIGHT];
+            newAtom[ATOMIC_NUMBER] = emission[ATOMIC_NUMBER];
+            newAtom[COLOR] = emission[COLOR];
+            frame += framesPerSpawn;
+		}
+
 		fieldMove(player);
 		enemyHandler(otherAtoms, ENEMY_SIZE, frame);
 		frame++;

@@ -118,7 +118,7 @@ void controls(int &velocityX, int &velocityY){
 bool isParticle(int x, int y){
     //checks if the object at x, y is a particle
     char currentChar = getConsoleChar(x, y);
-    return currentChar == NEUTRON || currentChar == PROTON; //add other particles later
+    return currentChar == NEUTRON || currentChar == PROTON || currentChar == ELECTRON || currentChar == POSITRON; //add other particles later
 }
 
 int* getCollidedObjectFoundIn(int x, int y){
@@ -192,6 +192,7 @@ void groupFieldMove(int *atoms[], int size){
 
 
 void groupUpdateVelocity(int *enemies[], int size){
+    //updates the velocity of the enemies
 	int i = 0;
 	while (i <= size){
         if (rand() % 2 == 0)
@@ -203,16 +204,19 @@ void groupUpdateVelocity(int *enemies[], int size){
 }
 
 
-int framesPerSpawn = 30;
+int framesPerSpawn = 40;
 
 int groupDecayParticles(int *enemies[], int spawnCount){
     int counter = 0;
     for (int i = 0; i != spawnCount; i++){
         if (enemies[i]){
             int *emission = decayParticle(enemies[i]);
-            if (emission){
+            if (emission && frame % DECAY_INTERVAL == 0){
                 frame += framesPerSpawn;
-                addAtomTo(enemies, ++spawnCount, enemies[i][COLOR]);
+                addAtomTo(enemies, ++spawnCount, TWHITE);
+                enemies[++spawnCount][ATOMIC_WEIGHT] = emission[ATOMIC_WEIGHT];
+                enemies[spawnCount][ATOMIC_NUMBER] = emission[ATOMIC_NUMBER];
+                enemies[spawnCount][COLOR] = emission[COLOR];
                 counter++;
                 }
         }

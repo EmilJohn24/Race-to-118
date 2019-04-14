@@ -1,8 +1,11 @@
 // Magic Numbers: 2,8,20,28,50,82,126
+#define DECAY_INTERVAL 31
 int* Particle(int atomicWeight, int atomicNumber, int color);
 
 int* alphaDecay(int *particle){
-    return NULL;
+    particle[ATOMIC_NUMBER] -= 2;
+    particle[ATOMIC_WEIGHT] -= 4;
+    return Particle(4, 2, TWHITE);
 }
 
 int* betaDecay(int *particle){
@@ -24,7 +27,7 @@ bool exceptions(int* particle){
     return false;
 }
 
-const float standardError = 0.1;
+const float standardError = 0.05;
 int* decayParticle(int* particle){
     int protons = particle[ATOMIC_NUMBER];
     int neutrons = particle[ATOMIC_WEIGHT] - protons;
@@ -51,7 +54,7 @@ int* decayParticle(int* particle){
     }
 
     if (protons > 84){
-        return NULL;
+        return alphaDecay(particle);
         //place alpha decay stuff here
     }
     return NULL;
