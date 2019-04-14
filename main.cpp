@@ -3,6 +3,7 @@
 #include <time.h>
 int frame = 0; //counts the number of frames passed
 int *player; //stores the player object
+bool stable = true;
 #include "game.h"
 #include "display.h"
 #include "welcome.h"
@@ -31,6 +32,7 @@ int main(){
 		controls(velocityX, velocityY);
         velocity(player, velocityX, velocityY);
 		int* emission = decayParticle(player);
+		stable = !emission;
 		if (emission && frame % DECAY_INTERVAL == 0){
             int spawnCount = (int)floor(frame / framesPerSpawn);
             addAtomTo(otherAtoms, spawnCount + 1, TBLUE);

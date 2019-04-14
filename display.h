@@ -88,7 +88,10 @@ void displayPlayerData(int* player){
     printf("Atomic Weight: %d\n", player[ATOMIC_WEIGHT]);
     printf("Atomic Ratio: %.2f\n", playerAtomicRatio);
     printf("Player Coords: %d,%d\n", player[X_COORD], player[Y_COORD]);
-    printf("Player Velocity: %2d %2d\n", player[X_VELOCITY], player[Y_VELOCITY]);
+    printf("Player Status: ");
+    if (stable) printf("Stable\n");
+    else printf("Unstable\n");
+    //printf("Player Velocity: %2d %2d\n", player[X_VELOCITY], player[Y_VELOCITY]);
 
 
 }
