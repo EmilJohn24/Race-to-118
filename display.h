@@ -61,6 +61,11 @@ void gameOverSequence(){
     exit(0);
 }
 
+void victorySequence(){
+    exit(0);
+
+}
+
 void destroyLastParticleInstance(int* particle){
     //destroys the last instance of a particle displayed on screen
     //int* particle: particle to be destroyed
@@ -89,7 +94,7 @@ void displayPlayerData(int* player){
     printf("Atomic Ratio: %.2f\n", playerAtomicRatio);
     printf("Player Coords: %d,%d\n", player[X_COORD], player[Y_COORD]);
     printf("Player Status: ");
-    if (stable) printf("Stable\n");
+    if (stable) printf("Stable  \n");
     else printf("Unstable\n");
     //printf("Player Velocity: %2d %2d\n", player[X_VELOCITY], player[Y_VELOCITY]);
 
