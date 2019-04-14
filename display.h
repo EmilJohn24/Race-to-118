@@ -2,6 +2,7 @@ void paintAtom(int color);
 
 void placeParticle(int* particle){
 	//places the particle in its current stored distance
+	//int* particle: a pointer to an array containing the particle to be placed
     if (particle[ATOMIC_NUMBER] == -1){
         placeElectronIn(particle[X_COORD],particle[Y_COORD],particle[COLOR]);
         return;
@@ -45,6 +46,7 @@ void placeParticle(int* particle){
 }
 
 void gameOverSequence(){
+    //displays the game over screen
     int row = 0;
     int col = 0;
     while (row < FIELD_SIDE * 2 || col < FIELD_SIDE * 2){
@@ -61,6 +63,7 @@ void gameOverSequence(){
 
 void destroyLastParticleInstance(int* particle){
     //destroys the last instance of a particle displayed on screen
+    //int* particle: particle to be destroyed
     textcolor(TBLACK);
     int newX, newY;
 	//places the particle in its current stored distance
@@ -78,6 +81,7 @@ void destroyLastParticleInstance(int* particle){
 
 void displayPlayerData(int* player){
     //displays the data of an atom (used mainly for the player)
+    //int* player: a pointer to an array containing the player's data
     gotoxy(0,0);
     float playerAtomicRatio = (float)player[ATOMIC_NUMBER] / (float)(player[ATOMIC_WEIGHT] - player[ATOMIC_NUMBER]);
     printf("Atomic Number: %d\n", player[ATOMIC_NUMBER]);
