@@ -1,13 +1,13 @@
 #define WELCOME_SCREEN_SIZE 500
 #include "fractals.h"
 
-void changeSettings(){
-
-
-
+void changeFrameRate(){
+    printf("New Frame Rate: ");
+    scanf("%d", &FRAMERATE);
 }
 
 void welcomePage(){
+    gotoxy(0,0);
     srand(time(0));
     printf("$$$$$$$\\                                        $$\\                       $$\\     $$\\    $$$$$$\\  \n$$  __$$\\                                       $$ |                    $$$$ |  $$$$ |  $$  __$$\\\n$$ |  $$ | $$$$$$\\   $$$$$$$\\  $$$$$$\\        $$$$$$\\    $$$$$$\\        \\_$$ |  \\_$$ |  $$ /  $$ |\n$$$$$$$  | \\____$$\\ $$  _____|$$  __$$\\       \\_$$  _|  $$  __$$\\         $$ |    $$ |   $$$$$$  |\n$$  __$$<  $$$$$$$ |$$ /      $$$$$$$$ |        $$ |    $$ /  $$ |        $$ |    $$ |  $$  __$$<\n$$ |  $$ |$$  __$$ |$$ |      $$   ____|        $$ |$$\\ $$ |  $$ |        $$ |    $$ |  $$ /  $$ |\n$$ |  $$ |\\$$$$$$$ |\\$$$$$$$\\ \\$$$$$$$\\         \\$$$$  |\\$$$$$$  |      $$$$$$\\ $$$$$$\\ \\$$$$$$  |\n\\__|  \\__| \\_______| \\_______| \\_______|         \\____/  \\______/       \\______|\\______| \\______/");
     printf("\n\n\nLoading...");
@@ -29,26 +29,24 @@ void welcomePage(){
     gotoxy(0,10);
     printf("Main Menu: \n");
     printf("1. Play Game\n");
-    printf("2. Change Settings \n");
+    printf("2. Change Frame Rate \n");
     printf("3. Exit Game \n");
 
-    char choice = getchar();
+    char choice = getch(); //Windows only
+    system("cls");
     switch(choice){
         case '1':
             return;
             break;
         case '2':
-            changeSettings();
+            changeFrameRate();
             break;
         case '3':
             exit(0);
             break;
-        default:
-            welcomePage();
-            return;
-            break;
     }
     system("cls");
+    welcomePage();
 }
 
 
