@@ -193,6 +193,7 @@ void groupFieldMove(int *atoms[], int size){
 
 void groupUpdateVelocity(int *enemies[], int size){
     //updates the velocity of the enemies
+    //presently uses a random walk algorithm
 	int i = 0;
 	while (i <= size){
         if (rand() % 2 == 0)
@@ -206,6 +207,7 @@ void groupUpdateVelocity(int *enemies[], int size){
 
 int framesPerSpawn = 40;
 int groupDecayParticles(int *enemies[], int spawnCount){
+    //decays an array of atoms
     int counter = 0;
     for (int i = 0; i != spawnCount; i++){
         if (enemies[i]){
@@ -224,6 +226,7 @@ int groupDecayParticles(int *enemies[], int spawnCount){
 }
 
 void enemyHandler(int *enemies[], int size, int frameNumber){
+    //handles all enemy actions
     int spawnCount = (int)floor(frameNumber / framesPerSpawn);
 	if (frameNumber % framesPerSpawn == 0) addAtomTo(enemies, spawnCount, TWHITE);
 	spawnCount += groupDecayParticles(enemies, spawnCount);
