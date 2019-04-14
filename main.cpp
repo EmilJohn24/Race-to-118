@@ -20,7 +20,7 @@ int main(){
     //welcomePage();
 	setupScreen();
 	srand(time(0));
-    player = Player(40, 20, TBLUE);
+    player = Player(4, 2, TBLUE);
 	int *otherAtoms[ENEMY_SIZE];
 	int velocityX = 0;
 	int velocityY = 0;
@@ -33,12 +33,12 @@ int main(){
         velocity(player, velocityX, velocityY);
 		int* emission = decayParticle(player);
 		stable = !emission;
-		if (emission && frame % DECAY_INTERVAL == 0){
+		if (emission && frame % DECAY_INTERVAL == 1){
             int spawnCount = (int)floor(frame / framesPerSpawn);
             addAtomTo(otherAtoms, spawnCount + 1, TBLUE);
             int* newAtom = otherAtoms[spawnCount + 1];
-            newAtom[X_COORD] = player[X_COORD] - 2;
-            newAtom[Y_COORD] = player[Y_COORD] - 2;
+            newAtom[X_COORD] = player[X_COORD] + getDimension(player) + 2;
+            newAtom[Y_COORD] = player[Y_COORD];
             newAtom[ATOMIC_WEIGHT] = emission[ATOMIC_WEIGHT];
             newAtom[ATOMIC_NUMBER] = emission[ATOMIC_NUMBER];
             newAtom[X_VELOCITY] = -velocityX;
@@ -51,6 +51,7 @@ int main(){
 		enemyHandler(otherAtoms, ENEMY_SIZE, frame);
 		frame++;
 		if (isDefeated(player)) gameOverSequence();
+		if (player[ATOMIC_NUMBER] > 118) victorySequence();
 	}
 }
 
