@@ -217,7 +217,25 @@ void groupFieldMove(int *atoms[], int size){
 	}
 }
 
+void randomWalk(int *particle){
+    if (rand() % 2 == 0)
+        velocity(particle, rand() % 3 - 1, 0);
+    else
+        velocity(particle, 0, rand() % 3 - 1);
 
+
+}
+
+void playerAttractor(int *particle){
+    //attracts the particle to the player
+    int playerX = player[X_COORD];
+    int playerY = player[Y_COORD];
+    if (playerX - particle[X_COORD] > 0) velocity(particle, 1, 0);
+    else if (playerX - particle[X_COORD] < 0) velocity(particle, -1, 0);
+    else if (playerY - particle[Y_COORD] > 0) velocity(particle, 0, 1);
+    else if (playerY - particle[Y_COORD] < 0) velocity(particle, 0, -1);
+
+}
 
 void groupUpdateVelocity(int *enemies[], int size){
     //updates the velocity of the enemies
@@ -226,12 +244,18 @@ void groupUpdateVelocity(int *enemies[], int size){
     //int size: size of the enemies
 	int i = 0;
 	while (i <= size){
-        if (rand() % 2 == 0)
-            velocity(enemies[i], rand() % 3 - 1, 0);
-        else
-            velocity(enemies[i], 0, rand() % 3 - 1);
-		i++;
+        //the particles take a random walk 3/4 of the time and goes to the player for the remaining 1/4
+        if (rand() % 4 != 0){
+            randomWalk(enemies[i]);
+        }
+        else{
+            //player attraction
+            playerAttractor(enemies[i]);
+
+        }
+        i++;
 	}
+
 }
 
 
