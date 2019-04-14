@@ -17,7 +17,7 @@ Some design considerations (A Prelude):
 
 */
 int main(){
-    //welcomePage();
+    welcomePage();
 	setupScreen();
 	srand(time(0));
     player = Player(4, 2, TBLUE);
@@ -50,8 +50,15 @@ int main(){
 		fieldMove(player);
 		enemyHandler(otherAtoms, ENEMY_SIZE, frame);
 		frame++;
-		if (isDefeated(player)) gameOverSequence();
-		if (player[ATOMIC_NUMBER] > 118) victorySequence();
+		if (isDefeated(player)){
+                gameOverSequence();
+                break;
+		}
+		if (player[ATOMIC_NUMBER] >= 118){
+                victorySequence();
+                break;
+		}
 	}
+	main();
 }
 
