@@ -6,6 +6,21 @@ void changeFrameRate(){
     scanf("%d", &FRAMERATE);
 }
 
+
+
+
+void instructions(){
+    printf("Welcome to Race To 118 \n");
+    printf("You are a lone helium atom that found yourself in a small void filled with different atoms. \n");
+    printf("Your dream is to become Oganesson, the legendary element number 118 and the only way you can do so is to collide with other atoms \n");.
+    printf("Rules: \n");
+    printf("1. Use the WASD keys to control your atom. (W = Left, A = Up, S = Down, D = Right)\n");
+    printf("2. You can consume an atom by colliding with him to his left or above him. This is because of the strong gravitational pull in those directions.\n");
+    printf("3. You will be consumed by any atom that hits your left or top part. Keep this in mind. Getting hit in these areas will result in a game over. \n");
+    printf("4. If you stumble upon an unstable configuration of an atom, it will be displayed in the info section above. \n");
+    printf("5. The decayed particles will be released from your body where it may hit you. \n");
+}
+
 void welcomePage(){
     gotoxy(0,0);
     srand(time(0));
