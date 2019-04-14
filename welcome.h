@@ -1,7 +1,11 @@
 #define WELCOME_SCREEN_SIZE 500
 #include "fractals.h"
 
+void changeSettings(){
 
+
+
+}
 
 void welcomePage(){
     srand(time(0));
@@ -23,12 +27,28 @@ void welcomePage(){
         break;
     }
     gotoxy(0,10);
-    printf("Press any key to continue...");
-    getch();
+    printf("Main Menu: \n");
+    printf("1. Play Game\n");
+    printf("2. Change Settings \n");
+    printf("3. Exit Game \n");
+
+    char choice = getchar();
+    switch(choice){
+        case '1':
+            return;
+            break;
+        case '2':
+            changeSettings();
+            break;
+        case '3':
+            exit(0);
+            break;
+        default:
+            welcomePage();
+            return;
+            break;
+    }
     system("cls");
-
-
-
 }
 
 
