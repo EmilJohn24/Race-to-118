@@ -17,7 +17,7 @@ Some design considerations (A Prelude):
 
 */
 int main(){
-    welcomePage();
+    //welcomePage();
 	setupScreen();
 	srand(time(0));
     player = Player(4, 2, TBLUE);
