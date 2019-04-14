@@ -31,13 +31,16 @@ int main(){
 		controls(velocityX, velocityY);
         velocity(player, velocityX, velocityY);
 		int* emission = decayParticle(player);
-
 		if (emission && frame % DECAY_INTERVAL == 0){
             int spawnCount = (int)floor(frame / framesPerSpawn);
             addAtomTo(otherAtoms, spawnCount + 1, TBLUE);
             int* newAtom = otherAtoms[spawnCount + 1];
+            newAtom[X_COORD] = player[X_COORD] - 2;
+            newAtom[Y_COORD] = player[Y_COORD] - 2;
             newAtom[ATOMIC_WEIGHT] = emission[ATOMIC_WEIGHT];
             newAtom[ATOMIC_NUMBER] = emission[ATOMIC_NUMBER];
+            newAtom[X_VELOCITY] = -velocityX;
+            newAtom[Y_VELOCITY] = -velocityY;
             newAtom[COLOR] = emission[COLOR];
             frame += framesPerSpawn;
 		}
