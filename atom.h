@@ -50,13 +50,15 @@ void efficientPrinter(int x, int y, int elemParticle, int color){
     printf("%c", elemParticle);
 }
 
+
+//a set of functions that print out the different types of particles
 void placePositronIn(int x, int y, int color){
     efficientPrinter(x, y, POSITRON, color);
 }
+
 void placeElectronIn(int x, int y, int color){
     efficientPrinter(x, y, ELECTRON, color);
 }
-
 
 void placeNeutronIn(int x, int y, int color){
     efficientPrinter(x, y, NEUTRON, color);
@@ -67,6 +69,7 @@ void placeProtonIn(int x, int y, int color){
 }
 
 void collisionEffect(int repeats){
+    //activates the flashing collision effect
 	for (int repeat = 0; repeat != repeats; repeat++){
 		setBackgroundColor(BWHITE);
 		Sleep(100);
