@@ -10,15 +10,20 @@ void changeFrameRate(){
 
 
 void instructions(){
-    printf("Welcome to Race To 118 \n");
+    system("cls");
+    gotoxy(0,0);
+    printf("--------Welcome to Race To 118--------- \n");
     printf("You are a lone helium atom that found yourself in a small void filled with different atoms. \n");
-    printf("Your dream is to become Oganesson, the legendary element number 118 and the only way you can do so is to collide with other atoms \n");.
+    printf("Your dream is to become Oganesson, the legendary element number 118 and the only way you can do so is to collide with other atoms \n");
     printf("Rules: \n");
-    printf("1. Use the WASD keys to control your atom. (W = Left, A = Up, S = Down, D = Right)\n");
-    printf("2. You can consume an atom by colliding with him to his left or above him. This is because of the strong gravitational pull in those directions.\n");
-    printf("3. You will be consumed by any atom that hits your left or top part. Keep this in mind. Getting hit in these areas will result in a game over. \n");
-    printf("4. If you stumble upon an unstable configuration of an atom, it will be displayed in the info section above. \n");
-    printf("5. The decayed particles will be released from your body where it may hit you. \n");
+    textcolor(TYELLOW);
+    printf("\t1. Use the WASD keys to control your atom. (W = Left, A = Up, S = Down, D = Right)\n");
+    printf("\t2. You can consume an atom by colliding with him to his left or above him. This is because of the strong gravitational pull in those directions.\n");
+    printf("\t3. You will be consumed by any atom that hits your left or top part. Keep this in mind. Getting hit in these areas will result in a game over. \n");
+    printf("\t4. If you stumble upon an unstable configuration of an atom, it will be displayed in the info section above. \n");
+    printf("\t5. The decayed particles will be released from your body where it may hit you. \n");
+    system("pause");
+    system("cls");
 }
 
 void welcomePage(){
@@ -51,6 +56,7 @@ void welcomePage(){
     system("cls");
     switch(choice){
         case '1':
+            instructions();
             return;
             break;
         case '2':
