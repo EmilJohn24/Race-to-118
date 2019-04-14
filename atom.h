@@ -52,7 +52,6 @@ void efficientPrinter(int x, int y, int elemParticle, int color){
 
 void placePositronIn(int x, int y, int color){
     efficientPrinter(x, y, POSITRON, color);
-particle[X_COORD],particle[Y_COORD],particle[COLOR]
 }
 void placeElectronIn(int x, int y, int color){
     efficientPrinter(x, y, ELECTRON, color);
