@@ -28,6 +28,7 @@ bool exceptions(int* particle){
 }
 
 const float standardError = 0.05;
+const float alphaError = 0.15;
 int* decayParticle(int* particle){
     int protons = particle[ATOMIC_NUMBER];
     int neutrons = particle[ATOMIC_WEIGHT] - protons;
@@ -54,7 +55,8 @@ int* decayParticle(int* particle){
     }
 
     if (protons > 84){
-        return alphaDecay(particle);
+        if (fabs(atomicRatio - 1.5) > alphaError)
+            return alphaDecay(particle);
         //place alpha decay stuff here
     }
     return NULL;
