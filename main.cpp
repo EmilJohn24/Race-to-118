@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-int frame = 0;
-int *player;
+int frame = 0; //counts the number of frames passed
+int *player; //stores the player object
 #include "game.h"
 #include "display.h"
 #include "welcome.h"
-#define ENEMY_SIZE 120000
+#define ENEMY_SIZE 100000
 
 /*
 Some design considerations (A Prelude):
