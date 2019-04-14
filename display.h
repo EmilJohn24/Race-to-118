@@ -7,7 +7,7 @@ void placeParticle(int* particle){
         return;
     }
 
-    if (particle[ATOMIC_NUMBER] == -1 && particle[ATOMIC_WEIGHT] == 0){
+    if (particle[ATOMIC_NUMBER] == 1 && particle[ATOMIC_WEIGHT] == 0){
         placePositronIn(particle[X_COORD],particle[Y_COORD],particle[COLOR]);
         return;
     }
@@ -45,9 +45,15 @@ void placeParticle(int* particle){
 }
 
 void gameOverSequence(){
+    int row = 0;
+    int col = 0;
+    while (row < FIELD_SIDE * 2 || col < FIELD_SIDE * 2){
+        getConsoleWindowSize(&row, &col);
+        setWindowSize(FIELD_SIDE * 2, FIELD_SIDE * 2);
+        setScreenSize(FIELD_SIDE * 2, FIELD_SIDE * 2);
+    }
     //prints game over
     gotoxy(0,0);
-    setWindowSize(FIELD_SIDE, FIELD_SIDE * 2);
     printf("..######......###....##.....##.########.....#######..##.....##.########.########.\n.##....##....##.##...###...###.##..........##.....##.##.....##.##.......##.....##\n.##.........##...##..####.####.##..........##.....##.##.....##.##.......##.....##\n.##...####.##.....##.##.###.##.######......##.....##.##.....##.######...########.\n.##....##..#########.##.....##.##..........##.....##..##...##..##.......##...##..\n.##....##..##.....##.##.....##.##..........##.....##...##.##...##.......##....##.\n..######...##.....##.##.....##.########.....#######.....###....########.##.....##");
     Sleep(10000);
     exit(0);
