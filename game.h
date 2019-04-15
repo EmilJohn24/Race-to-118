@@ -269,16 +269,10 @@ int groupDecayParticles(int *enemies[], int spawnCount){
     for (int i = 0; i != spawnCount; i++){
         if (enemies[i]){
             int *emission = decayParticle(enemies[i]);
-            if (emission && frame % DECAY_INTERVAL == 0){
-                frame += framesPerSpawn;
-                addAtomTo(enemies, ++spawnCount, TWHITE);
-                enemies[++spawnCount][ATOMIC_WEIGHT] = emission[ATOMIC_WEIGHT];
-                enemies[spawnCount][ATOMIC_NUMBER] = emission[ATOMIC_NUMBER];
-                enemies[spawnCount][COLOR] = emission[COLOR];
+            if (emitter(emission, enemies[i], frame, framesPerSpawn, enemies))
                 counter++;
-                }
+            }
         }
-    }
     return counter;
 }
 

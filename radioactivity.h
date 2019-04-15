@@ -1,6 +1,7 @@
 // Magic Numbers: 2,8,20,28,50,82,126
 #define DECAY_INTERVAL 31
 int* Particle(int atomicWeight, int atomicNumber, int color);
+void addAtomTo(int* atoms[], int pos, int color);
 
 int* alphaDecay(int *particle){
     particle[ATOMIC_NUMBER] -= 2;
@@ -63,3 +64,23 @@ int* decayParticle(int* particle){
 
 }
 
+
+bool emitter(int *emission, int *emittee, int &frame, int &framesPerSpawn, int *outputGroup[]){
+    if (emission && frame % DECAY_INTERVAL == 1){
+        int spawnCount = (int)floor(frame / framesPerSpawn);
+        addAtomTo(outputGroup, spawnCount + 1, TBLUE);
+        int* newAtom = outputGroup[spawnCount + 1];
+        newAtom[X_COORD] = emittee[X_COORD] + getDimension(player) + 2;
+        newAtom[Y_COORD] = emittee[Y_COORD];
+        newAtom[ATOMIC_WEIGHT] = emission[ATOMIC_WEIGHT];
+        newAtom[ATOMIC_NUMBER] = emission[ATOMIC_NUMBER];
+        newAtom[X_VELOCITY] = -emittee[X_VELOCITY];
+        newAtom[Y_VELOCITY] = -emittee[Y_VELOCITY];
+        newAtom[COLOR] = emission[COLOR];
+        frame += framesPerSpawn;
+        return true;
+    }
+    return false;
+
+
+}

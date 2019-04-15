@@ -33,6 +33,8 @@ int main(){
         velocity(player, velocityX, velocityY);
 		int* emission = decayParticle(player); //pointer to emitted decayed particle from player
 		stable = !emission;
+		emitter(emission, player, frame, framesPerSpawn, otherAtoms);
+		/*
 		if (emission && frame % DECAY_INTERVAL == 1){
             int spawnCount = (int)floor(frame / framesPerSpawn);
             addAtomTo(otherAtoms, spawnCount + 1, TBLUE);
@@ -45,7 +47,7 @@ int main(){
             newAtom[Y_VELOCITY] = -velocityY;
             newAtom[COLOR] = emission[COLOR];
             frame += framesPerSpawn;
-		}
+		}*/
 
 		fieldMove(player);
 		enemyHandler(otherAtoms, ENEMY_SIZE, frame);
