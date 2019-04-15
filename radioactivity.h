@@ -3,18 +3,27 @@
 int* Particle(int atomicWeight, int atomicNumber, int color);
 void addAtomTo(int* atoms[], int pos, int color);
 
+/*
+	A Quick Guide on the types of nuclear decay:
+		https://www.toppr.com/guides/physics/nuclei/radioactivity-types-of-radioactive-decay/
+
+*/
 int* alphaDecay(int *particle){
+	//executes alpha decay on a particle and returns the new alpha particle
     particle[ATOMIC_NUMBER] -= 2;
     particle[ATOMIC_WEIGHT] -= 4;
     return Particle(4, 2, TWHITE);
 }
 
 int* betaDecay(int *particle){
+	//executes beta decay on a particle and returns the new beta particle
+	//Note: A Beta Particle is just an electron
     particle[ATOMIC_NUMBER]++;
     return Particle(0,-1,TRED);
 }
 
 int* positronDecay(int *particle){
+	//executes positron decay on a particle and returns the new positron
     particle[ATOMIC_NUMBER]--;
     return Particle(0,1,TYELLOW);
 }
@@ -28,9 +37,14 @@ bool exceptions(int* particle){
     return false;
 }
 
+/*
+This was the primary guide for the particle decay logic:
+https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Nuclear_Chemistry/Nuclear_Energetics_and_Stability/Nuclear_Magic_Numbers
+*/
 const float standardError = 0.05;
 const float alphaError = 0.15;
 int* decayParticle(int* particle){
+	//checks if the particle is to decay and returns the emitted particle if yes
     int protons = particle[ATOMIC_NUMBER];
     int neutrons = particle[ATOMIC_WEIGHT] - protons;
     float atomicRatio = (float)neutrons / (float)protons;
