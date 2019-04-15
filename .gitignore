@@ -1,1 +1,6 @@
 pics/*
+.o
+.gch
+.depend
+.layout
+bin/*
