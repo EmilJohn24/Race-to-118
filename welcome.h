@@ -2,6 +2,7 @@
 #include "fractals.h"
 
 void changeFrameRate(){
+	//menu for changing the game;s frame rate
     printf("New Frame Rate: ");
     scanf("%d", &FRAMERATE);
 }
@@ -22,6 +23,9 @@ void instructions(){
     printf("\t3. You will be consumed by any atom that hits your left or top part. Keep this in mind. Getting hit in these areas will result in a game over. \n");
     printf("\t4. If you stumble upon an unstable configuration of an atom, it will be displayed in the info section above. \n");
     printf("\t5. The decayed particles will be released from your body where it may hit you. \n");
+    textcolor(TWHITE);
+    printf("Legend:\n");
+    printf("Neutron:%c\nProton:%c\nElectron:%c\nPositron:%c\n", NEUTRON, PROTON, ELECTRON, POSITRON);
     system("pause");
     system("cls");
 }
