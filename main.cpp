@@ -8,14 +8,7 @@ bool stable = true;
 #include "display.h"
 #include "welcome.h"
 #define ENEMY_SIZE 100000
-//LATEST
-/*
-Some design considerations (A Prelude):
 
-
-
-
-*/
 int main(){
     welcomePage();
 	setupScreen();

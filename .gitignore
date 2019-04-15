@@ -5,7 +5,6 @@ bin/*
 obj/*
 *.exe
 *.layout
-*.dev
 *.win
 *.o
 *.txt
