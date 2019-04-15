@@ -6,7 +6,6 @@ obj/*
 *.exe
 *.layout
 *.dev
-cb/*
 *.win
 *.o
 *.txt
