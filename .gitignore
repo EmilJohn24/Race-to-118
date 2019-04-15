@@ -7,3 +7,5 @@ obj/*
 *.layout
 *.dev
 cb/*
+*.win
+*.o
