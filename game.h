@@ -1,12 +1,11 @@
-//#define FRAMERATE 20
-int FRAMERATE = 20;
+int FRAMERATE = 20; //frame rate of the game
 #define FIELD_SIDE 75
 #include "console.h"
 #include "atom.h"
 #include "radioactivity.h"
 #include <conio.h>
 
-int *field[FIELD_SIDE][FIELD_SIDE];
+int *field[FIELD_SIDE][FIELD_SIDE]; //contains  pointers to the atoms and where they are in the field
 
 
 void fieldDelete(int x, int y){
@@ -218,6 +217,7 @@ void groupFieldMove(int *atoms[], int size){
 }
 
 void randomWalk(int *particle){
+	//executes a random walk on particle by changing its velocities
     if (rand() % 2 == 0)
         velocity(particle, rand() % 3 - 1, 0);
     else
@@ -227,7 +227,7 @@ void randomWalk(int *particle){
 }
 
 void playerAttractor(int *particle){
-    //attracts the particle to the player
+    //attracts the particle to the player by changing its velocities
     int playerX = player[X_COORD];
     int playerY = player[Y_COORD];
     if (playerX - particle[X_COORD] > 0) velocity(particle, 1, 0);
