@@ -1,0 +1,8 @@
+pics/*
+*.o
+*.gch
+*.depend
+*.layout
+bin/*
+obj/*
+*.exe
