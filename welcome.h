@@ -2,6 +2,7 @@
 #include "fractals.h"
 
 void changeFrameRate(){
+	//menu for changing the game;s frame rate
     printf("New Frame Rate: ");
     scanf("%d", &FRAMERATE);
 }
@@ -22,11 +23,16 @@ void instructions(){
     printf("\t3. You will be consumed by any atom that hits your left or top part. Keep this in mind. Getting hit in these areas will result in a game over. \n");
     printf("\t4. If you stumble upon an unstable configuration of an atom, it will be displayed in the info section above. \n");
     printf("\t5. The decayed particles will be released from your body where it may hit you. \n");
+    textcolor(TWHITE);
+    printf("Particle Guide:\n");
+    textcolor(TGREEN);
+    printf("\tNeutron:%c\n\tProton:%c\n\tElectron:%c\n\tPositron:%c\n", NEUTRON, PROTON, ELECTRON, POSITRON);
     system("pause");
     system("cls");
 }
 
 void welcomePage(){
+	//welcome page for the game
     gotoxy(0,0);
     setScreenSize(WELCOME_SCREEN_SIZE, WELCOME_SCREEN_SIZE);
     srand(time(0));
@@ -42,7 +48,7 @@ void welcomePage(){
     case 1:
         float vertexA[2] = {25,15}, vertexB[2] = {0,80}, vertexC[2] = {60,60};
         float vertexD[2] = {80, 50};
-        sierpinskisTriangle(vertexA, vertexB, vertexC, 100000, TYELLOW);
+        sierpinskisTriangle(vertexA, vertexB, vertexC, 10000, TYELLOW);
         sierpinskisTriangle(vertexA, vertexC, vertexD, 10000, TRED);
         break;
     }

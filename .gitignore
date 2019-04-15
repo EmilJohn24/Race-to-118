@@ -1,8 +1,12 @@
 pics/*
 *.o
 *.gch
-*.depend
-*.layout
 bin/*
 obj/*
 *.exe
+*.layout
+*.dev
+cb/*
+*.win
+*.o
+*.txt
