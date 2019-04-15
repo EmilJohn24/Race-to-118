@@ -20,7 +20,7 @@ int main(){
     welcomePage();
 	setupScreen();
 	srand(time(0));
-    player = Player(40, 20, TBLUE); //array containing the player object
+    player = Player(4, 2, TBLUE); //array containing the player object
 	int *otherAtoms[ENEMY_SIZE]; //array of pointers to enemy atoms
 	int velocityX = 0; //player velocity in x-dir
 	int velocityY = 0; //player velocity in y-dir
