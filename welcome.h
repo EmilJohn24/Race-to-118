@@ -31,6 +31,7 @@ void instructions(){
 }
 
 void welcomePage(){
+	//welcome page for the game
     gotoxy(0,0);
     setScreenSize(WELCOME_SCREEN_SIZE, WELCOME_SCREEN_SIZE);
     srand(time(0));
@@ -46,7 +47,7 @@ void welcomePage(){
     case 1:
         float vertexA[2] = {25,15}, vertexB[2] = {0,80}, vertexC[2] = {60,60};
         float vertexD[2] = {80, 50};
-        sierpinskisTriangle(vertexA, vertexB, vertexC, 100000, TYELLOW);
+        sierpinskisTriangle(vertexA, vertexB, vertexC, 10000, TYELLOW);
         sierpinskisTriangle(vertexA, vertexC, vertexD, 10000, TRED);
         break;
     }
