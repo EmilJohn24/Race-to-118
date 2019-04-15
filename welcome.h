@@ -24,8 +24,9 @@ void instructions(){
     printf("\t4. If you stumble upon an unstable configuration of an atom, it will be displayed in the info section above. \n");
     printf("\t5. The decayed particles will be released from your body where it may hit you. \n");
     textcolor(TWHITE);
-    printf("Legend:\n");
-    printf("Neutron:%c\nProton:%c\nElectron:%c\nPositron:%c\n", NEUTRON, PROTON, ELECTRON, POSITRON);
+    printf("Particle Guide:\n");
+    textcolor(TGREEN);
+    printf("\tNeutron:%c\n\tProton:%c\n\tElectron:%c\n\tPositron:%c\n", NEUTRON, PROTON, ELECTRON, POSITRON);
     system("pause");
     system("cls");
 }
