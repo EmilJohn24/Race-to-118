@@ -1,6 +1,6 @@
 //#define FRAMERATE 20
 int FRAMERATE = 20;
-#define FIELD_SIDE 75
+#define FIELD_SIDE 50
 #include "console.h"
 #include "atom.h"
 #include "radioactivity.h"
